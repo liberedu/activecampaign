@@ -2,6 +2,9 @@
 
 namespace TestMonitor\ActiveCampaign\Resources;
 
+/**
+ * 
+ */
 class Contact extends Resource
 {
     /**
@@ -31,6 +34,11 @@ class Contact extends Resource
      */
     public $orgid;
 
+    /**
+     * @var array
+     */
+    public $fieldValues;
+
     public function subscribe($list)
     {
         $this->activeCampaign->updateListStatus($list, $this->id, true);
@@ -40,4 +48,16 @@ class Contact extends Resource
     {
         $this->activeCampaign->updateListStatus($list, $this->id, false);
     }
+
+    // /**
+    //  * Create a new resource instance.
+    //  *
+    //  * @param  array $attributes
+    //  * @param  \TestMonitor\ActiveCampaign\ActiveCampaign $activeCampaign
+    //  * @return void
+    //  */
+    // public function __construct(array $attributes, $activeCampaign = null)
+    // {
+    //     parent::__construct($attributes, $activeCampaign);
+    // }
 }

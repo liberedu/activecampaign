@@ -51,15 +51,14 @@ trait ManagesContacts
      * @param string $firstName
      * @param string $lastName
      * @param int|null $phone
+     * @param array $fieldValues
      *
      * @return Contact|null
      */
-    public function createContact($email, $firstName, $lastName, $phone = null)
+    public function createContact($email, $firstName, $lastName, $phone = null, array $fieldValues = [])
     {
-        $contacts = $this->transformCollection(
-            $this->post('contacts', ['json' => ['contact' => compact('email', 'firstName', 'lastName', 'phone')]]),
-            Contact::class
-        );
+        $response = $this->post('contacts', ['json' => ['contact' => compact('email', 'firstName', 'lastName', 'phone', 'fieldValues')]]);
+        $contacts = $this->transformCollection($response, Contact::class, 'contact');
 
         return array_shift($contacts);
     }
