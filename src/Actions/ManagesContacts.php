@@ -189,4 +189,16 @@ trait ManagesContacts
 
         $this->delete("contactTags/{$contactTag->id}");
     }
+
+    /**
+     * Bulk import contacts
+     *
+     * @param array $contacts
+     * 
+     * @return void
+     */
+    public function bulkImport(array $contacts) {
+
+        $this->post('import/bulk_import', ['json' => ['contacts' => $contacts]]);
+    }
 }
