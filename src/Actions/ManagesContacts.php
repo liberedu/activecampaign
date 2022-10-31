@@ -92,10 +92,10 @@ trait ManagesContacts
      *
      * @return Contact
      */
-    public function updateOrCreateContact($email, $firstName, $lastName, $phone)
+    public function updateOrCreateContact($email, $firstName, $lastName, $phone, array $fieldValues = [])
     {
         $contacts = $this->transformCollection(
-            $this->post('contact/sync', ['json' => ['contact' => compact('email', 'firstName', 'lastName', 'phone')]]),
+            $this->post('contact/sync', ['json' => ['contact' => compact('email', 'firstName', 'lastName', 'phone','fieldValues')]]),
             Contact::class
         );
 
