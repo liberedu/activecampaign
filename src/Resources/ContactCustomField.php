@@ -46,7 +46,7 @@ class ContactCustomField
             self::picture($data['picture']),
             self::cpf($data['cpf']),
         ];
-        return array_filter($fields, fn (array $entry) => !empty($entry['value']));
+        return array_values(array_filter($fields, fn (array $entry) => !empty($entry['value'])));
     }
 
     private static function getField($id, $value): array {
