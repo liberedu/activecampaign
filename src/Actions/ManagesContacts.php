@@ -99,7 +99,7 @@ trait ManagesContacts
             Contact::class
         );
 
-        return array_shift($contacts);
+        return $contacts["contact"] ?? null;;
     }
 
     /**
